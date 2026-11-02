@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" role="img" aria-labelledby="title"><title id="title">MacEQ menu bar</title>
+<g fill="none" stroke="#606060" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round">
+<circle cx="6.5" cy="5.5" r="3"/><circle cx="17.5" cy="5.5" r="2.5"/>
+<path d="M3.5 12v9M9 12v9M15 12v9M20.5 12v9"/>
+<path d="M2 17h3M7.5 14h3M13.5 19h3M19 15.5h3" stroke-width="2.5"/>
+</g></svg>
