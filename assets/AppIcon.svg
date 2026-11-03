@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024" role="img" aria-labelledby="title desc">
-<title id="title">MacEQ app icon</title><desc id="desc">A full-bleed charcoal audio console with blue and pink rotary knobs and four illuminated equalizer faders. macOS supplies the outer icon mask.</desc>
+<title id="title">MacEQ app icon</title><desc id="desc">A rounded charcoal audio console with blue and pink rotary knobs and four illuminated equalizer faders, inset on a transparent canvas for the macOS Dock.</desc>
 <defs><linearGradient id="case" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#45434f"/><stop offset=".38" stop-color="#2a2833"/><stop offset="1" stop-color="#191820"/></linearGradient>
 <linearGradient id="edge" x1="0" y1="0" x2=".6" y2="1"><stop stop-color="#a4a0b6"/><stop offset=".45" stop-color="#474351"/><stop offset="1" stop-color="#17141e"/></linearGradient>
 <radialGradient id="face" cx=".26" cy=".05" r="1"><stop stop-color="#45404e"/><stop offset=".6" stop-color="#2b2833"/><stop offset="1" stop-color="#201c27"/></radialGradient>
@@ -11,6 +11,10 @@
 <filter id="knobShadow" x="-.4" y="-.4" width="1.8" height="1.9"><feDropShadow dx="0" dy="10" stdDeviation="8" flood-color="#0b0711" flood-opacity=".75"/></filter>
 <filter id="glow" x="-1" y="-1" width="3" height="3"><feGaussianBlur stdDeviation="3"/></filter><linearGradient id="ringPink" x1=".2" y1="0" x2=".8" y2="1"><stop stop-color="#ffe3f4"/><stop offset=".25" stop-color="#f7b5df"/><stop offset=".6" stop-color="#df7cb5"/><stop offset="1" stop-color="#863c79"/></linearGradient>
 <radialGradient id="dialPink" cx=".3" cy=".18" r=".95"><stop stop-color="#ffe4f4"/><stop offset=".35" stop-color="#efb0d9"/><stop offset=".75" stop-color="#cb76b7"/><stop offset="1" stop-color="#813d7d"/></radialGradient></defs>
+<!-- Legacy ICNS and the runtime Dock image must carry their own silhouette. -->
+<defs><clipPath id="iconMask"><path d="M256 0H768C938 0 1024 86 1024 256V768C1024 938 938 1024 768 1024H256C86 1024 0 938 0 768V256C0 86 86 0 256 0Z"/></clipPath></defs>
+<g transform="translate(100 100) scale(.8046875)">
+<g clip-path="url(#iconMask)">
 <rect width="1024" height="1024" fill="url(#face)"/>
 <g id="equalizer" transform="translate(-118.153846 -100.923077) scale(1.23076923)">
 <path d="M140 283C140 167 190 116 305 116h410" fill="none" stroke="#cec5e0" stroke-opacity=".13" stroke-width="3" stroke-linecap="round"/>
@@ -160,6 +164,8 @@
 <path d="M736 681h42" stroke="#130e1c" stroke-width="9" stroke-linecap="round"/>
 <path d="M739 681h36" stroke="#d6b6f5" stroke-width="3" stroke-linecap="round"/>
 <path d="M736 697h42" stroke="#271a36" stroke-width="3"/>
+</g>
+</g>
 </g>
 </g>
 </svg>

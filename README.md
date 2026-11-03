@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="bundle/generated/FinderIconPreview.png" width="128" alt="MacEQ app icon" />
+  <img src="bundle/generated/AppIcon256.png" width="128" alt="MacEQ app icon" />
 </p>
 
 # MacEQ
