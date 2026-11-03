@@ -27,9 +27,9 @@ pub fn configure(ctx: &egui::Context) {
     style.visuals.extreme_bg_color = INSET;
     style.visuals.faint_bg_color = Color32::from_rgb(37, 37, 42);
     style.visuals.selection.bg_fill = Color32::from_rgb(70, 66, 111);
-    style.visuals.selection.stroke = egui::Stroke::new(1., TEXT);
+    style.visuals.selection.stroke = egui::Stroke::new(1f32, TEXT);
     style.visuals.window_corner_radius = 12.into();
-    style.visuals.window_stroke = egui::Stroke::new(1., BORDER);
+    style.visuals.window_stroke = egui::Stroke::new(1f32, BORDER);
     style.visuals.slider_trailing_fill = true;
     for widget in [
         &mut style.visuals.widgets.inactive,
@@ -38,8 +38,8 @@ pub fn configure(ctx: &egui::Context) {
         &mut style.visuals.widgets.open,
     ] {
         widget.corner_radius = 8.into();
-        widget.fg_stroke = egui::Stroke::new(1.2, TEXT);
-        widget.bg_stroke = egui::Stroke::new(1., BORDER);
+        widget.fg_stroke = egui::Stroke::new(1.2f32, TEXT);
+        widget.bg_stroke = egui::Stroke::new(1f32, BORDER);
     }
     style.visuals.widgets.inactive.bg_fill = Color32::from_rgb(44, 44, 50);
     style.visuals.widgets.inactive.weak_bg_fill = Color32::from_rgb(39, 39, 44);
@@ -48,8 +48,8 @@ pub fn configure(ctx: &egui::Context) {
     style.visuals.widgets.active.bg_fill = Color32::from_rgb(68, 61, 91);
     style.visuals.widgets.active.weak_bg_fill = Color32::from_rgb(61, 54, 83);
     style.visuals.widgets.open.bg_fill = Color32::from_rgb(56, 50, 76);
-    style.visuals.widgets.noninteractive.bg_stroke = egui::Stroke::new(1., BORDER);
-    style.visuals.widgets.noninteractive.fg_stroke = egui::Stroke::new(1., MUTED);
+    style.visuals.widgets.noninteractive.bg_stroke = egui::Stroke::new(1f32, BORDER);
+    style.visuals.widgets.noninteractive.fg_stroke = egui::Stroke::new(1f32, MUTED);
     style
         .text_styles
         .insert(egui::TextStyle::Body, egui::FontId::proportional(14.));
@@ -66,7 +66,7 @@ pub fn card() -> egui::Frame {
         .fill(PANEL)
         .corner_radius(16.)
         .inner_margin(16.)
-        .stroke(egui::Stroke::new(1., BORDER))
+        .stroke(egui::Stroke::new(1f32, BORDER))
         .shadow(egui::epaint::Shadow {
             offset: [0, 5],
             blur: 15,
@@ -115,7 +115,7 @@ pub fn pill_toggle(
     p.rect_stroke(
         rect,
         16.,
-        egui::Stroke::new(1., if *value { alpha(color, 90) } else { BORDER }),
+        egui::Stroke::new(1f32, if *value { alpha(color, 90) } else { BORDER }),
         egui::StrokeKind::Inside,
     );
     let track = egui::Rect::from_center_size(
@@ -189,7 +189,7 @@ pub fn rotary(ui: &mut egui::Ui, value: &mut f64, accent: Color32) -> egui::Resp
         p.line_segment(
             [center + d * 32., center + d * 35.],
             egui::Stroke::new(
-                1.,
+                1f32,
                 if i as f32 / 24. <= fraction {
                     alpha(accent, 160)
                 } else {
@@ -208,7 +208,7 @@ pub fn rotary(ui: &mut egui::Ui, value: &mut f64, accent: Color32) -> egui::Resp
     p.circle_stroke(
         center,
         24.,
-        egui::Stroke::new(1., Color32::from_rgb(67, 67, 74)),
+        egui::Stroke::new(1f32, Color32::from_rgb(67, 67, 74)),
     );
     let points = (0..=60)
         .map(|i| {
@@ -218,13 +218,13 @@ pub fn rotary(ui: &mut egui::Ui, value: &mut f64, accent: Color32) -> egui::Resp
         .collect();
     p.add(egui::Shape::line(
         points,
-        egui::Stroke::new(2., alpha(accent, 190)),
+        egui::Stroke::new(2f32, alpha(accent, 190)),
     ));
     let angle = start + sweep * fraction;
     let d = egui::vec2(angle.cos(), angle.sin());
     p.line_segment(
         [center + d * 11., center + d * 19.],
-        egui::Stroke::new(2.5, TEXT),
+        egui::Stroke::new(2.5f32, TEXT),
     );
     p.circle_filled(center + d * 19., 2., TEXT);
     response.on_hover_text("Preamp · drag up/right to raise level, down/left to lower. Double-click for 0 dB. Arrow keys adjust 0.5 dB.")

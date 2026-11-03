@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="bundle/generated/FinderIconPreview.png" width="128" alt="MacEQ app icon" />
+  <img src="bundle/generated/AppIcon256.png" width="128" alt="MacEQ app icon" />
 </p>
 
 # MacEQ
@@ -170,10 +170,13 @@ This repository uses Git Flow with `main` for releases and `develop` for integra
 After fetching dependencies:
 
 ```sh
+cargo fetch --locked
 ./scripts/check.sh
 ```
 
 The script runs formatting, Clippy with warnings treated as errors, Rust tests, and native buffer/launch tests under address and undefined-behavior sanitizers. The current suite has 35 Rust tests covering DSP, callback routing, profile persistence, reconnection rules, chart interactions, and spectrum suspension/resumption.
+
+[GitHub Actions CI](.github/workflows/ci.yml) runs the same checks on every push and pull request using macOS 15 runners for Apple Silicon and Intel with stable Rust. Dependencies are cached and fetched with the lockfile before the offline checks. You can also start a run from the repository's **Actions → CI → Run workflow** menu once the workflow is on the default branch. No repository secrets are required.
 
 Automated and synthetic tests do not replace listening tests, routing-isolation checks, permission testing, or hardware disconnect and recovery checks.
 

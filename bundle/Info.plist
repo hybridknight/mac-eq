@@ -4,11 +4,11 @@
 <key>CFBundleName</key><string>MacEQ</string>
 <key>CFBundleDisplayName</key><string>MacEQ</string>
 <key>CFBundleIdentifier</key><string>app.maceq.MacEQ</string>
-<key>CFBundleIconFile</key><string>MacEQ-PinkBlue-FullSize.icns</string>
+<key>CFBundleIconFile</key><string>MacEQ-Rounded.icns</string>
 <key>CFBundleExecutable</key><string>maceq</string>
 <key>CFBundlePackageType</key><string>APPL</string>
-<key>CFBundleShortVersionString</key><string>0.1.0</string>
-<key>CFBundleVersion</key><string>3</string>
+<key>CFBundleShortVersionString</key><string>1.0.0</string>
+<key>CFBundleVersion</key><string>4</string>
 <key>LSUIElement</key><true/>
 <key>LSMinimumSystemVersion</key><string>14.4</string>
 <key>NSHighResolutionCapable</key><true/>

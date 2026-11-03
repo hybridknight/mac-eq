@@ -243,7 +243,7 @@ impl MacEQ {
                 ui.horizontal(|ui|{
                     let(rect,_)=ui.allocate_exact_size(egui::vec2(30.,30.),egui::Sense::hover());
                     ui.painter().circle_filled(rect.center(),15.,theme::alpha(accent,24));
-                    ui.painter().circle_stroke(rect.center(),15.,egui::Stroke::new(1.,theme::alpha(accent,80)));
+                    ui.painter().circle_stroke(rect.center(),15.,egui::Stroke::new(1f32,theme::alpha(accent,80)));
                     ui.painter().text(rect.center(),egui::Align2::CENTER_CENTER,if ch==0{"L"}else{"R"},egui::FontId::proportional(14.),accent);
                     ui.label(RichText::new(if ch==0{"Left channel"}else{"Right channel"}).size(17.).strong());
                     ui.with_layout(egui::Layout::right_to_left(egui::Align::Center),|ui|{
@@ -344,7 +344,7 @@ fn band_editor(ui: &mut egui::Ui, band: &mut Band, index: usize, accent: Color32
         .fill(theme::INSET)
         .corner_radius(10.)
         .inner_margin(10.)
-        .stroke(egui::Stroke::new(1., Color32::from_rgb(42, 42, 48)))
+        .stroke(egui::Stroke::new(1f32, Color32::from_rgb(42, 42, 48)))
         .show(ui, |ui| {
             ui.horizontal(|ui| {
                 ui.label(
