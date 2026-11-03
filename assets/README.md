@@ -2,7 +2,7 @@
 
 Original SVG artwork drawn for MacEQ, using the supplied equalizer-console image as visual reference. All shapes, highlights, gradients and controls are vectors; no embedded raster images, fonts, scripts, or remote resources.
 
-- `AppIcon.svg`: 1024 × 1024 app mark with a full-bleed opaque charcoal background, blue and pink dials and four faders. macOS supplies the outer icon mask; artwork has no inset case or transparent outer margin, which would produce a smaller icon inside a second tile on macOS 26. The in-app header applies its own rounded clip.
+- `AppIcon.svg`: 1024 × 1024 app mark with a rounded charcoal case, blue and pink dials and four faders. The 824 × 824 case is centered on a transparent canvas with 100-pixel margins. The artwork includes its own rounded silhouette because legacy ICNS files and the runtime Dock image are displayed without an automatic system mask. The in-app header applies its own rounded clip.
 - `Artwork.svg`: 1200 × 1000 presentation artwork on a pale pink/lavender/blue background.
 - `MenuBarTemplate.svg`: 24 × 24 monochrome outline mark. macOS uses it as an 18-point template image and supplies the appropriate system tint in light and dark appearances.
 
