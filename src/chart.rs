@@ -91,7 +91,7 @@ pub fn response_graph(
                 );
                 painter.line_segment(
                     [egui::pos2(x(lo), top), egui::pos2(x(hi), top)],
-                    egui::Stroke::new(1., theme::alpha(color, 90)),
+                    egui::Stroke::new(1f32, theme::alpha(color, 90)),
                 );
             }
         }
@@ -107,7 +107,7 @@ pub fn response_graph(
                 egui::pos2(x(hz), plot.top()),
                 egui::pos2(x(hz), plot.bottom()),
             ],
-            egui::Stroke::new(1., Color32::from_gray(29)),
+            egui::Stroke::new(1f32, Color32::from_gray(29)),
         );
         // At narrow widths keep every other label, while preserving grid lines.
         if plot.width() < 550. && [50., 200., 2000., 5000.].contains(&hz) {
@@ -131,7 +131,7 @@ pub fn response_graph(
                 egui::pos2(plot.left(), y(db)),
                 egui::pos2(plot.right(), y(db)),
             ],
-            egui::Stroke::new(1., Color32::from_gray(if db == 0. { 65 } else { 30 })),
+            egui::Stroke::new(1f32, Color32::from_gray(if db == 0. { 65 } else { 30 })),
         );
         painter.text(
             egui::pos2(plot.left() - 5., y(db)),
@@ -190,7 +190,7 @@ pub fn response_graph(
             .extend_from_slice(&[j, j + 1, j + 2, j + 1, j + 2, j + 3]);
     }
     painter.add(egui::Shape::mesh(fill));
-    for (width, a) in [(9., 12), (5., 25)] {
+    for (width, a) in [(9f32, 12), (5f32, 25)] {
         painter.add(egui::Shape::line(
             points.clone(),
             egui::Stroke::new(width, theme::alpha(curve_color, a)),
@@ -198,7 +198,7 @@ pub fn response_graph(
     }
     painter.add(egui::Shape::line(
         points,
-        egui::Stroke::new(2.2, curve_color),
+        egui::Stroke::new(2.2f32, curve_color),
     ));
     let id = ui.id().with("selected_chart_band");
     let mut selected = ui
@@ -286,7 +286,7 @@ pub fn response_graph(
         painter.circle_stroke(
             pos,
             if selected == Some(i) { 8. } else { 6.5 },
-            egui::Stroke::new(1.5, theme::alpha(dot_color, 180)),
+            egui::Stroke::new(1.5f32, theme::alpha(dot_color, 180)),
         );
         painter.circle_filled(
             pos,
@@ -316,7 +316,7 @@ pub fn response_graph(
                     egui::pos2(pos.x, plot.top()),
                     egui::pos2(pos.x, plot.bottom()),
                 ],
-                egui::Stroke::new(1., Color32::from_gray(85)),
+                egui::Stroke::new(1f32, Color32::from_gray(85)),
             );
             response.on_hover_ui(|ui| {
                 ui.label(format!("{hz:.0} Hz · {db:+.1} dB gain"));

@@ -32,7 +32,10 @@ jobs:
           persist-credentials: false
 
       - name: Install Rust tools
-        run: rustup toolchain install stable --profile minimal --component rustfmt --component clippy
+        run: |
+          rustup toolchain install stable --profile minimal --component rustfmt --component clippy
+          rustc --version
+          cargo --version
 
       - name: Cache Rust dependencies and build output
         uses: Swatinem/rust-cache@v2
