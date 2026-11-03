@@ -235,6 +235,7 @@ mod tests {
     fn independent_channels() {
         let mut p = flat();
         p.linked = false;
+        p.channels[0].bands[0].hz = 1000.;
         p.channels[0].bands[0].db = -12.;
         let mut d = Processor::new(Params::compile(&p, 48000.), 48000.);
         let mut power = [0.; 2];

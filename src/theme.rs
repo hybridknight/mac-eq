@@ -159,7 +159,7 @@ pub fn rotary(ui: &mut egui::Ui, value: &mut f64, accent: Color32) -> egui::Resp
         response.mark_changed();
     }
     if response.double_clicked() {
-        *value = -6.;
+        *value = 0.;
         response.mark_changed();
     }
     if response.has_focus() && ui.is_enabled() {
@@ -227,7 +227,7 @@ pub fn rotary(ui: &mut egui::Ui, value: &mut f64, accent: Color32) -> egui::Resp
         egui::Stroke::new(2.5, TEXT),
     );
     p.circle_filled(center + d * 19., 2., TEXT);
-    response.on_hover_text("Preamp · drag up/right to raise level, down/left to lower. Double-click for −6 dB. Arrow keys adjust 0.5 dB.")
+    response.on_hover_text("Preamp · drag up/right to raise level, down/left to lower. Double-click for 0 dB. Arrow keys adjust 0.5 dB.")
 }
 pub fn meter(ui: &mut egui::Ui, peak: f32, accent: Color32) {
     let db = 20. * peak.max(1e-6).log10();

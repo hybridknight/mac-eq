@@ -80,7 +80,7 @@ Each channel has a response chart, preamp, output meter, and filter cards. The c
 | Change bandwidth (Q) | Hold **Shift** and drag a band point vertically |
 | Reset a band's gain | Double-click its point |
 | Enter an exact value | Double-click a numeric field and type; dragging also adjusts it |
-| Adjust preamp | Drag the knob or edit its numeric value; double-click the knob to restore −6 dB |
+| Adjust preamp | Drag the knob or edit its numeric value; double-click the knob to restore 0 dB |
 | Reset a channel | Open its **•••** menu and choose **Reset channel** |
 | Start with ten frequencies | Choose **Reset to 10 frequency bands** in the channel's **•••** menu |
 
@@ -88,7 +88,9 @@ Each band supports **Bell**, **Low shelf**, **High shelf**, **Low pass**, or **H
 
 Choose **Independent** for separate Left and Right settings. Choosing **Linked L + R** copies the last edited channel to the other side, and subsequent edits affect both channels, including channel resets.
 
-The default preamp is −6 dB to leave room for boosts. **Clip protection** applies a stereo-linked sample-peak limiter; it is not a true-peak limiter. **Hear original** lets you compare the dry audio while the device session stays running.
+New profiles and channel resets start with ten flat bell bands at 31.5, 63, 125, 250, 500, 1k, 2k, 4k, 8k, and 16k Hz. Saved profiles retain their existing band layout.
+
+The default preamp is 0 dB. Lower it when boosting bands to leave headroom. **Clip protection** applies a stereo-linked sample-peak limiter; it is not a true-peak limiter. **Hear original** lets you compare the dry audio while the device session stays running.
 
 ### Manage devices and presets
 
@@ -161,6 +163,8 @@ This lists device identifiers, sample rates, and format support without starting
 
 ## Development
 
+This repository uses Git Flow with `main` for releases and `develop` for integration. See [CONTRIBUTING.md](CONTRIBUTING.md) for branch, release, and hotfix conventions.
+
 ### Run checks
 
 After fetching dependencies:
@@ -169,7 +173,7 @@ After fetching dependencies:
 ./scripts/check.sh
 ```
 
-The script runs formatting, Clippy with warnings treated as errors, Rust tests, and native buffer/launch tests under address and undefined-behavior sanitizers. The current suite has 33 Rust tests covering DSP, callback routing, profile persistence, reconnection rules, chart interactions, and spectrum suspension/resumption.
+The script runs formatting, Clippy with warnings treated as errors, Rust tests, and native buffer/launch tests under address and undefined-behavior sanitizers. The current suite has 35 Rust tests covering DSP, callback routing, profile persistence, reconnection rules, chart interactions, and spectrum suspension/resumption.
 
 Automated and synthetic tests do not replace listening tests, routing-isolation checks, permission testing, or hardware disconnect and recovery checks.
 
