@@ -314,7 +314,10 @@ mod tests {
     fn spectrum_receives_processed_audio_without_blocking_when_full() {
         use crate::spectrum::FFT_SIZE;
         use std::f32::consts::PI;
-        let p = Profile::default();
+        let mut p = Profile::default();
+        for channel in &mut p.channels {
+            channel.preamp = -6.;
+        }
         let params = Params::compile(&p, 48000.);
         let (_producer, updates) = rtrb::RingBuffer::new(8);
         let (capture, mut spectrum) = crate::spectrum::channel();

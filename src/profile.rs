@@ -49,8 +49,17 @@ pub struct Channel {
 impl Default for Channel {
     fn default() -> Self {
         Self {
-            preamp: -6.,
-            bands: vec![Band::default()],
+            preamp: 0.,
+            bands: [
+                31.5, 63., 125., 250., 500., 1000., 2000., 4000., 8000., 16000.,
+            ]
+            .into_iter()
+            .map(|hz| Band {
+                hz,
+                q: 1.4,
+                ..Band::default()
+            })
+            .collect(),
         }
     }
 }
@@ -196,11 +205,42 @@ impl Settings {
 mod tests {
     use super::*;
     #[test]
+    fn defaults_to_ten_flat_bands_per_channel() {
+        let profile = Profile::default();
+        assert!(profile.validate().is_ok());
+        for channel in &profile.channels {
+            assert_eq!(channel.preamp, 0.);
+            assert_eq!(channel.bands.len(), 10);
+            assert_eq!(
+                channel.bands.iter().map(|band| band.hz).collect::<Vec<_>>(),
+                vec![31.5, 63., 125., 250., 500., 1000., 2000., 4000., 8000., 16000.]
+            );
+            assert!(channel.bands.iter().all(|band| {
+                band.enabled && band.kind == Filter::Peak && band.db == 0. && band.q == 1.4
+            }));
+        }
+    }
+    #[test]
+    fn saved_custom_band_layout_is_preserved() {
+        let mut profile = Profile::default();
+        for channel in &mut profile.channels {
+            channel.bands = vec![Band {
+                hz: 750.,
+                db: -3.,
+                ..Band::default()
+            }];
+        }
+        let saved = serde_json::to_string(&profile).unwrap();
+        let loaded: Profile = serde_json::from_str(&saved).unwrap();
+        assert!(loaded.validate().is_ok());
+        assert_eq!(serde_json::to_string(&loaded).unwrap(), saved);
+    }
+    #[test]
     fn validates_and_roundtrips() {
         let p = Profile::default();
         assert!(p.validate().is_ok());
         let p: Profile = serde_json::from_str(&serde_json::to_string(&p).unwrap()).unwrap();
-        assert_eq!(p.channels[0].preamp, -6.);
+        assert_eq!(p.channels[0].preamp, 0.);
     }
     #[test]
     fn rejects_bad_profiles() {

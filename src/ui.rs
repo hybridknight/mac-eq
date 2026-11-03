@@ -248,8 +248,8 @@ impl MacEQ {
                     ui.label(RichText::new(if ch==0{"Left channel"}else{"Right channel"}).size(17.).strong());
                     ui.with_layout(egui::Layout::right_to_left(egui::Align::Center),|ui|{
                         ui.menu_button("•••",|ui|{
-                            if ui.button("Reset channel").on_hover_text("Flat EQ, −6 dB preamp. Linked mode resets both.").clicked(){*channel=Channel::default();changed=true;ui.close_menu();}
-                            if ui.button("Reset to 10 frequency bands").on_hover_text("Replaces current filters with ten flat bell bands. Linked mode changes both.").clicked(){channel.bands=[31.5,63.,125.,250.,500.,1000.,2000.,4000.,8000.,16000.].into_iter().map(|hz|Band{hz,q:1.4,..Default::default()}).collect();changed=true;ui.close_menu();}
+                            if ui.button("Reset channel").on_hover_text("Flat EQ, 0 dB preamp. Linked mode resets both.").clicked(){*channel=Channel::default();changed=true;ui.close_menu();}
+                            if ui.button("Reset to 10 frequency bands").on_hover_text("Replaces current filters with ten flat bell bands. Linked mode changes both.").clicked(){channel.bands=Channel::default().bands;changed=true;ui.close_menu();}
                         });
                         ui.label(RichText::new(format!("{} / {MAX_BANDS}",channel.bands.len())).monospace().size(11.).color(MUTED));
                     });
